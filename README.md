@@ -47,10 +47,8 @@ Please provide the following in a GITHUB REPOSITORY.
 4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
 
 
-You should also provide a script that builds, and runs the docker container. 
-
-You should also provide a script that scaffolds how a user can run the ETL process. This an be `curl` or something else.
-
+Please also provide a script that builds, and runs the docker container. 
+You should also provide a script that scaffolds how a user can run the ETL process. This can be `curl` or something else.
 Finally, provide a script that queries the database and showcases that it has been populated with the desired features.
 
 
