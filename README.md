@@ -39,12 +39,19 @@ From the provided CSV files, derive the following features:
 3. User's most commonly experimented compound.
 
 ## Deliverables
-Please provide the following:
+Please provide the following in a GITHUB REPOSITORY.
 
 1. A Dockerfile that sets up the environment for your application.
 2. A requirements.txt file with all the Python dependencies.
 3. A Python script that sets up the API and the ETL process.
 4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
+
+
+You should also provide a script that builds, and runs the docker container. 
+
+You should also provide a script that scaffolds how a user can run the ETL process. This an be `curl` or something else.
+
+Finally, provide a script that queries the database and showcases that it has been populated with the desired features.
 
 
 ## Evaluation
