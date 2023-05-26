@@ -23,12 +23,12 @@ In this challenge, you will be tasked with creating a simple ETL pipeline that c
 ### Data
 You will find three CSV files in the `data`  directory:
 
-`users.csv`: Contains user data with the following columns: `user_id`, `name`, `email`,`signup_date`.
+- `users.csv`: Contains user data with the following columns: `user_id`, `name`, `email`,`signup_date`.
 
-`user_experiments.csv`: Contains experiment data with the following columns: `experiment_id`, `user_id`, `experiment_compound_ids`, `experiment_run_time`. The `experiment_compound_ids` column contains a semicolon-separated list of compound IDs.
+- `user_experiments.csv`: Contains experiment data with the following columns: `experiment_id`, `user_id`, `experiment_compound_ids`, `experiment_run_time`. The `experiment_compound_ids` column contains a semicolon-separated list of compound IDs.
 
 
-`compounds.csv`: Contains compound data with the following columns: `compound_id`, `compound_name`, `compound_structure`.
+- `compounds.csv`: Contains compound data with the following columns: `compound_id`, `compound_name`, `compound_structure`.
 
 
 ## Feature Derivation
