@@ -1,0 +1,21 @@
+version: '3.9.2'
+
+services:
+ web:
+  build:
+   context: .
+  ports:
+  - 5000:5000
+  volumes:
+  - ./:/backend_takehome
+
+ postgresdb:
+  image: postgres
+  ports:
+  - 5432:5432
+  environment:
+  - POSTGRES_PASSWORD=backendtakehome
+  - POSTGRES_DB=postgresdb
+  - POSTGRES_USER=postgres
+  volumes:
+  - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql

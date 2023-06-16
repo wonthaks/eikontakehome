@@ -1,61 +1,49 @@
-# Backend Engineering Take-Home Challenge
+# README for the application
 
-### Introduction
-In this challenge, you will be tasked with creating a simple ETL pipeline that can be triggered via an API call. You will be provided with a set of CSV files that you will need to process, derive some features from, and then upload into a database table.
+## Before setting up the application.
+I developed this project using Docker for desktop and windows CMD to test the api.
+There are two ways to set up and test the application.
 
-### Requirements
-- Python 3.7+
-- Docker
-- PostgreSQL
+## First way.
 
-### Challenge
-1.  Create a Dockerized application that can be started with a single `docker run` command.
+### Set up the environment and the application.
+Run the build.sh file. This will set up the environment and the application for use.
 
-2. The application should expose an API endpoint that triggers an ETL process.
+### Test the application.
+1. (Optional) Run the querydb.sh file to check that there is nothing there. It will return a "[]".
 
-3. The ETL process should:
-- Load CSV files from the given data directory.
- - Process these files to derive some simple features.
- - Upload the processed data into a **postgres** table.
+2. Run the triggeretl.sh file. This will process the csv files and upload the derived features to the databse.
 
-4.  The application should be built using Python and any tooling you like for coordinating the workflow and fronting the api server
+3. Run the querydb.sh file again to check that the expected features appear.
 
-### Data
-You will find three CSV files in the `data`  directory:
+Note that the features will appear in a list respectively in the format of:
+	- user_id
+	- total_experiments
+	- average_experiment_time
+	- most_commonly_used_compounds
 
-- `users.csv`: Contains user data with the following columns: `user_id`, `name`, `email`,`signup_date`.
+## Second way.
 
-- `user_experiments.csv`: Contains experiment data with the following columns: `experiment_id`, `user_id`, `experiment_compound_ids`, `experiment_run_time`. The `experiment_compound_ids` column contains a semicolon-separated list of compound IDs.
+### Set up the environment and the application.
+Run the following command in the directory which contains all the application files. 
 
+`docker compose -f compose.dev.yml up --build`
 
-- `compounds.csv`: Contains compound data with the following columns: `compound_id`, `compound_name`, `compound_structure`.
+### How to test/run the ETL process and how to query the database for the derived features.
+1. (Optional) Run the following command to check the postgres database for existing derived features. 
 
+`curl localhost:5000/query`
 
-## Feature Derivation
-From the provided CSV files, derive the following features:
+Note that it will return a "[]" since we have not populated anything in the database yet. 
 
-1. Total experiments a user ran.
-2. Average experiments amount per user.
-3. User's most commonly experimented compound.
+2. Run the following command to trigger the ETL process.
 
-## Deliverables
-Please provide the following in a GITHUB REPOSITORY.
+`curl localhost:5000/etl`
 
-1. A Dockerfile that sets up the environment for your application.
-2. A requirements.txt file with all the Python dependencies.
-3. A Python script that sets up the API and the ETL process.
-4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
+It should return a message indicating the ETL process started.
 
+3. Run the following command to query the postgres database to check if it was populated with the correct data.
 
-Please also provide a script that builds, and runs the docker container. 
-You should also provide a script that scaffolds how a user can run the ETL process. This can be `curl` or something else.
-Finally, provide a script that queries the database and showcases that it has been populated with the desired features.
+`curl localhost:5000/query`
 
-
-## Evaluation
-Your solution will be evaluated on the following criteria:
-
-Code quality and organization.
-Proper use of Python and Docker.
-Successful execution of the ETL process.
-Accuracy of the derived features.
+This will print out a list of the processed data in a table.
