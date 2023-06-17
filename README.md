@@ -16,11 +16,12 @@ Run the build.sh file. This will set up the environment and the application for 
 
 3. Run the querydb.sh file again to check that the expected features appear.
 
-Note that the features will appear in a list respectively in the format of:
-	- user_id
-	- total_experiments
-	- average_experiment_time
-	- most_commonly_used_compounds
+Note that the features will appear in a list respectively in the format of-
+
+1. user_id
+2. total_experiments
+3. average_experiment_time
+4. most_commonly_used_compounds
 
 ## Second way.
 
